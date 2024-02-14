@@ -1,6 +1,8 @@
+import Lottie from 'lottie-react';
 import { useState } from 'react';
-import { getRandomNumber } from './utils';
+import flyingHeart from './assets/flying_heart.json';
 import { ACTION_GIF } from './constants';
+import { getRandomNumber } from './utils';
 
 function App() {
 	const [isAccepted, setIsAccepted] = useState(false);
@@ -17,13 +19,22 @@ function App() {
 	};
 
 	return (
-		<div className="flex w-screen h-screen justify-center items-start mt-4 overflow-hidden">
-			<div className="text-center font-sans flex flex-col justify-center gap-10 items-center">
-				<img
-					className="h-60 rounded transition-all"
-					src={actionGif}
-					alt="gif"
-				/>
+		<div className="flex w-screen h-screen justify-center items-start  overflow-hidden">
+			<div className="text-center font-sans flex flex-col justify-center mt-4 gap-10 items-center">
+				<div className="relative">
+					<img
+						className="h-60 rounded transition-all"
+						src={actionGif}
+						alt="gif"
+					/>
+					{isAccepted && (
+						<Lottie
+							className="absolute top-0 left-0 -z-1"
+							animationData={flyingHeart}
+							loop={true}
+						/>
+					)}
+				</div>
 				<h1 className="text-black text-3xl tracking-widest font-semibold">
 					{!isAccepted ? 'Will you be my valentine ?' : 'Yayyy !'}
 				</h1>
