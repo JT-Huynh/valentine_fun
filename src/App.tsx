@@ -17,8 +17,8 @@ function App() {
 	};
 
 	return (
-		<div className="flex w-screen h-screen justify-center items-center overflow-hidden">
-			<div className="text-center font-sans flex flex-col justify-center gap-8 items-center">
+		<div className="flex w-screen h-screen justify-center items-start mt-4 overflow-hidden">
+			<div className="text-center font-sans flex flex-col justify-center gap-10 items-center">
 				<img
 					className="h-60 rounded transition-all"
 					src={actionGif}
@@ -27,7 +27,7 @@ function App() {
 				<h1 className="text-black text-3xl tracking-widest font-semibold">
 					{!isAccepted ? 'Will you be my valentine ?' : 'Yayyy !'}
 				</h1>
-				{!isAccepted && (
+				{!isAccepted ? (
 					<div className="text-white transition-all">
 						<button
 							onClick={() => {
@@ -57,6 +57,13 @@ function App() {
 							No
 						</button>
 					</div>
+				) : (
+					<svg
+						className="fill-pink-400 animate-bounce h-20"
+						viewBox="0 0 32 29.6"
+					>
+						<path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z" />
+					</svg>
 				)}
 			</div>
 		</div>
