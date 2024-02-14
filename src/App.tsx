@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { getRandomNumber } from './utils';
+import { ACTION_GIF } from './constants';
 
 function App() {
 	const [isAccepted, setIsAccepted] = useState(false);
 	const [isNoEnter, setIsNoEnter] = useState(false);
 	const [noPostion, setNoPosition] = useState({ top: '0%', left: '0%' });
+	const [actionGif, setActionGif] = useState(ACTION_GIF.normal);
 
 	const handleNoEnter = () => {
 		setIsNoEnter(true);
@@ -19,11 +21,7 @@ function App() {
 			<div className="text-center font-sans flex flex-col justify-center gap-8 items-center">
 				<img
 					className="h-60 rounded transition-all"
-					src={
-						!isAccepted
-							? 'https://media.giphy.com/media/tLcf4s4DK3tZmYUn6F/giphy.gif?cid=790b7611j3h900kkqj9lbfnxatg983e5dsd3k0l1ezx9x564&ep=v1_gifs_search&rid=giphy.gif&ct=g'
-							: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDB5Y3E0bTBpdDF2eGNraTMwcTZ3c3B5NGJxYnpyeGVhZmgwODZjciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5dUllWbKVlaqmMTvHb/giphy.gif'
-					}
+					src={actionGif}
 					alt="gif"
 				/>
 				<h1 className="text-black text-3xl tracking-widest font-semibold">
@@ -32,7 +30,10 @@ function App() {
 				{!isAccepted && (
 					<div className="text-white transition-all">
 						<button
-							onClick={() => setIsAccepted(true)}
+							onClick={() => {
+								setIsAccepted(true);
+								setActionGif(ACTION_GIF.yes);
+							}}
 							className={`bg-teal-500 hover:bg-teal-700 hover:ring ring-teal-300 ${
 								isNoEnter
 									? 'py-6 px-12 w-40'
@@ -43,6 +44,9 @@ function App() {
 							Yes
 						</button>
 						<button
+							onClick={() => {
+								setActionGif(ACTION_GIF.no);
+							}}
 							onMouseEnter={handleNoEnter}
 							className={`bg-red-500 hover:bg-red-700 hover:ring ring-red-300 py-2 px-6 w-20 rounded mx-4 ${
 								isNoEnter ? `absolute` : ''
