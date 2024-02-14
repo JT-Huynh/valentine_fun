@@ -1,10 +1,7 @@
 ## Overview
 
-Fun little project for Valentine days built in React + Tailwind
+Fun little project for Valentine days built in React + Tailwind. Ask your whatever out
 
-## To-Dos
+![demo-img](./demo.gif)
 
--   [ ] Implement a moving clickable no button
--   [ ] Put some fun gif for yes/no answer
--   [ ] Implement simple typing or word drawing animation on Valentine and it's pronunciation
--   [ ] Add a mood button flip on
+[Demo](https://valentine-fun-eight.vercel.app/)
